@@ -1,8 +1,8 @@
 package com.example.Model;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.GregorianCalendar;
+import java.util.*;
+
 
 /**
  * Created by jhipster on 6/10/15.
@@ -14,17 +14,38 @@ public class Jugador {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column
     private String nombre;
 
+    @Column
     private Date fechaNacimiento;
 
+    @Column
     private Integer numCanastas;
 
+    @Column
     private Integer numAsistencias;
 
+    @Column
     private Integer rebotesTotales;
 
+    @Column
     private String posicion;
+
+    @ManyToOne
+    private Equipo equipo;
+
+    public Jugador(){
+
+    }
+    public Jugador(String nombre, Date fechaNacimiento, Integer numCanastas, Integer numAsistencias, Integer rebotesTotales, String posicion){
+        this.nombre=nombre;
+        this.fechaNacimiento=fechaNacimiento;
+        this.numCanastas=numCanastas;
+        this.numAsistencias=numAsistencias;
+        this.rebotesTotales=rebotesTotales;
+        this.posicion=posicion;
+    }
 
     public Long getId() {
         return id;
@@ -83,6 +104,15 @@ public class Jugador {
         this.posicion = posicion;
     }
 
+    public Equipo getEquipo() {
+        return equipo;
+    }
+
+    public void setEquipo(Equipo equipo) {
+        this.equipo = equipo;
+    }
+
+
     @Override
     public String toString() {
         return "Jugador{" +
@@ -93,6 +123,7 @@ public class Jugador {
                 ", numAsistencias=" + numAsistencias +
                 ", rebotesTotales=" + rebotesTotales +
                 ", posicion='" + posicion + '\'' +
+                ", equipo=" + equipo +
                 '}';
     }
 }
