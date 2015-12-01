@@ -24,9 +24,11 @@ public class Equipo{
     @Column
     private Date fechaCreacion;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "equipo")
     private Set<Jugador> jugadores = new HashSet<>();
 
+    @JsonIgnore
     @ManyToMany
     private Set<Temporada> temporadas = new HashSet<>();
     

@@ -1,5 +1,7 @@
 package com.example.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.*;
 
@@ -32,6 +34,7 @@ public class Jugador {
     @Column
     private String posicion;
 
+    @JsonIgnore
     @ManyToOne
     private Equipo equipo;
 

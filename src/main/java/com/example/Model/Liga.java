@@ -19,6 +19,7 @@ public class Liga {
     @Column
     private String nombre;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "liga")
     private Set<Temporada> temporadas = new HashSet<>();
 
